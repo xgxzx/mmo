@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+
+
+{% block content %}
+    <img src="{{ profile.photo.url }}" alt="Profile photo" class="rounded" style="width: 75px; height: auto">
+    <h1>{{ user.username }}</h1>
+    <div class="row">
+        <div class="col">
+            {{ user_form.username.label_tag }}
+            {{ user_form.username }}
+        </div>
+        <div class="col">
+            {{ user_form.email.label_tag }}
+            {{ user_form.email }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ user_form.first_name.label_tag }}
+            {{ user_form.first_name }}
+        </div>
+        <div class="col">
+            {{ user_form.last_name.label_tag }}
+            {{ user_form.last_name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ profile_form.telegram.label_tag }}
+            {{ profile_form.telegram }}
+        </div>
+        <div class="col">
+            {{ profile_form.discord.label_tag }}
+            {{ profile_form.discord }}
+        </div>
+    </div>
+    {{ profile_form.about_me.label_tag }}
+    <div class="about-me" style="width: 50%; word-wrap: break-word;">
+  {{ profile.about_me|safe }}
+    {{ category.all }}
+</div>
+
+
+{% endblock %}

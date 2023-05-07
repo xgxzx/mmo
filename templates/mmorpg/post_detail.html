@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load material_form %}
+{% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+{% block title %}
+Пост
+{% endblock title %}
+
+
+{% block content %}
+<h1>Post {{ post.title }} #{{ post.id }}</h1>
+Автор - {{ post.author.user }}
+<br>
+Время поста - {{ post.time_in }}
+<br>
+Тип поста - {{ post.publication_type }}
+<br>
+Заголовок - {{ post.post_title }}
+<br>
+Текст - {{ post.post_text }}
+<br>
+Рейтинг - {{ post.rating }}
+
+{% endblock content %}

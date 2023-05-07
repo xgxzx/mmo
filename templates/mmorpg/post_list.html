@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+<h1>All Post</h1>
+<hr>
+
+
+     <h1>All Posts</h1>
+  <ul>
+    {% for post in posts %}
+      <li>{{ post.title }}</li>
+    {% endfor %}
+  </ul>
+
+
+
+    {% if posts %}
+        <table>
+            <tr>
+                <td>Заголовок</td>
+               <td>Статья</td>
+               <td>Дата публикации</td>
+{#               {% if perms.newssj.change_post or perms.newssj.delete_post %}#}
+{#               <td>Действия</td>#}
+{#               {% endif %}#}
+           </tr>
+
+           {% for post in posts %}
+           <tr>
+               <td>{{ post.author.id }}</td>
+               <td>{{ post.title }}</td>
+               <td>{{ post.body }}</td>
+               <td>{{ post.category }}</td>
+{#               <td>#}
+{#                   {% if perms.newssj.change_post %}#}
+{#                   <a href="{% url 'edit_news' pk=new.id %}">Изменить</a>#}
+{#                   {% endif %}#}
+{#                   {% if perms.newssj.delete_post %}#}
+{#                   <a href="{% url 'delete_news' pk=new.id %}">Удалить</a>#}
+{#                   {% endif %}#}
+{#               </td>#}
+           </tr>
+           {% endfor %}
+       </table>
+   {% else %}
+{#</div>#}
+
+       <h2>Новостей нет!</h2><td>{{ postik.author }}</td>
+   {% endif %}
+    {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; первая</a>
+        ...
+        <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+    {% endif %}
+
+    <span class="current">
+        Страница {{ page_obj.number }}
+    </span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+        ...
+        <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+    {% endif %}
+
+{% endblock content %}
